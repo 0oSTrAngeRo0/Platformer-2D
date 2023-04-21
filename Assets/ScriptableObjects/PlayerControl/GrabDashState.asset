@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dfaaab9c8ac634fa85e33502b84eb9, type: 3}
+  m_Name: GrabDashState
+  m_EditorClassIdentifier: 
+  _FatherStateMachine: {fileID: 11400000, guid: 6ffe9d1c3fac28443933262612c53b89,
+    type: 2}
+  _Paramaters: {fileID: 11400000, guid: bcf10126fe4c6234d9e9ea3973061638, type: 2}
+  _StateName: GrabDash
+  _DebugColor: {r: 0.645, g: 0.603462, b: 0.58566, a: 0}
+  _Speed: 20
+  _Duration: -0.0059683933

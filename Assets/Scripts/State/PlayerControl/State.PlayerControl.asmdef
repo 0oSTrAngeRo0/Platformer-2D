@@ -1,0 +1,21 @@
+{
+    "name": "State.PlayerControl",
+    "rootNamespace": "State.PlayerControl",
+    "references": [
+        "GUID:5c5eef870d1c4074f8866e4c09f416bc",
+        "GUID:23eed6c2401dca1419d1ebd180e58c5a",
+        "GUID:b78182e8fddb9a1439137b023d5f6100",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:570b03ee68c778b4b83d4614b546d819",
+        "GUID:9d52ce7d4494a88459241e374137b982"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

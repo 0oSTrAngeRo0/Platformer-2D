@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752b0413aad774847838d09cb74289fd, type: 3}
+  m_Name: Paramaters
+  m_EditorClassIdentifier: 
+  JumpBufferTime: 0.2
+  CoyoteTime: 0.16
+  MoveX: 0
+  MoveY: 0
+  JumpBuffer: -1
+  IsDash: 0
+  IsHeld: 0
+  IsGrab: 0
+  GrabDirection: {x: 0, y: 0}
+  IsGround: 1
+  IsWall: 0
+  CoyoteBuffer: 0
+  CurrentJumpTimes: 0
+  DashCoolBuffer: -0.000038266182
+  Velocity: {x: 0, y: 0}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71273c288306ece4aa30c1fa5ccab462, type: 3}
+  m_Name: StateMachine
+  m_EditorClassIdentifier: 
+  states:
+  - {fileID: 11400000, guid: f6a639d7d9c688f4e9b59fe4838506d6, type: 2}
+  - {fileID: 11400000, guid: ee6816d60c36d20429d89cc85fcfd45d, type: 2}
+  - {fileID: 11400000, guid: 9e23a0e852a794e41bb228d906b7fdc3, type: 2}
+  - {fileID: 11400000, guid: 417c0ff6550bb41418c68e601788518e, type: 2}
+  - {fileID: 11400000, guid: 687897d32a5370c4993231df37fc9e11, type: 2}
+  - {fileID: 11400000, guid: ec0ded82deb1d524986eca4138c5f02f, type: 2}
+  - {fileID: 11400000, guid: 7e2b7f47255f3b34b88c98af9c427e76, type: 2}
+  - {fileID: 11400000, guid: 5d2c32fe11a42eb46b440f2d49187221, type: 2}
+  - {fileID: 11400000, guid: 7b1284fa562c83a4a91cef1bd6809e91, type: 2}
+  <_Paramaters>k__BackingField: {fileID: 11400000, guid: bcf10126fe4c6234d9e9ea3973061638,
+    type: 2}
+  <_CurrentState>k__BackingField: {fileID: 11400000, guid: ec0ded82deb1d524986eca4138c5f02f,
+    type: 2}
+  <_LastState>k__BackingField: {fileID: 11400000, guid: ec0ded82deb1d524986eca4138c5f02f,
+    type: 2}

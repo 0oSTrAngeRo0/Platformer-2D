@@ -1,0 +1,17 @@
+{
+    "name": "Platform",
+    "rootNamespace": "Enviroment.Platform",
+    "references": [
+        "GUID:5c5eef870d1c4074f8866e4c09f416bc",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
