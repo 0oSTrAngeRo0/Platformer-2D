@@ -7,16 +7,16 @@ namespace Input
 {
     public class PlayerInputManager : MonoBehaviour
     {
-        private PlayerInputAction _PlayerInputAction;
+        private PlayerInputActions _PlayerInputActions;
 
         void Start()
         {
-            _PlayerInputAction = new();
+            _PlayerInputActions = new();
         }
         
         public void EnableGameplayInputs()
         {
-            _PlayerInputAction.GamePlay.Enable();
+            _PlayerInputActions.GamePlay.Enable();
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
