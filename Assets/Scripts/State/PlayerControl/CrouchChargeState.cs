@@ -1,66 +1,47 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace State.PlayerControl
 {
     [Serializable]
-    [CreateAssetMenu(fileName = "CrouchState", menuName = "ScriptableObject/PlayerControl/State/Crouch")]
-    class CrouchState : State
+    [CreateAssetMenu(fileName = "CrouchChargeState", menuName = "ScriptableObject/PlayerControl/State/CrouchChargeState")]
+    public class CrouchChargeState : State
     {
         [Header("Config")]
-        [SerializeField] private float _MaxSpeed;
-        [SerializeField] private float _AccelerateTime;
-        [SerializeField] private float _DecelerateTime;
         [SerializeField] private float _HoldTimeLimitation;
 
         [Header("Information")]
-        [SerializeField, ReadOnly] private float _MoveSpeed;
-        [SerializeField, ReadOnly] private float _AccelerateSpeed;
-        [SerializeField, ReadOnly] private float _DecelerateSpeed;
         [SerializeField, ReadOnly] private float _HoldTime;
+
+        public float HoldTime => _HoldTime;
+        public float HoldTimeLimitation => _HoldTimeLimitation;
 
         public override void Initialize(StateMachine father)
         {
             base.Initialize(father);
-            _AccelerateSpeed = _MaxSpeed / _AccelerateTime;
-            _DecelerateSpeed = _MaxSpeed / _DecelerateTime;
         }
         public override void Enter()
         {
             base.Enter();
             _Paramaters.Player.IsCrouch = true;
+            _Paramaters.Velocity = Vector2.zero;
             _HoldTime = 0;
-            _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
         }
         public override void PopEnter()
         {
             base.PopEnter();
             _Paramaters.Player.IsCrouch = true;
+            _Paramaters.Velocity = Vector2.zero;
             _HoldTime = 0;
-            _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
         }
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            if (_Paramaters.MoveX == 0)
-            {
-                _MoveSpeed = Mathf.MoveTowards(_MoveSpeed, 0, Time.deltaTime * _DecelerateSpeed);
-                _HoldTime += Time.deltaTime;
-            }
-            else
-            {
-                if (_HoldTime > Mathf.Epsilon)
-                {
-                    _HoldTime = 0;
-                }
-                _MoveSpeed += _Paramaters.MoveX * _AccelerateSpeed * Time.deltaTime;
-                _MoveSpeed = Mathf.Clamp(_MoveSpeed, -_MaxSpeed, _MaxSpeed);
-            }
-            _Paramaters.Velocity.x = _MoveSpeed;
         }
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            _HoldTime = Mathf.Clamp(_HoldTime + Time.deltaTime, 0, _HoldTimeLimitation);
             if(_Paramaters.IsTopBlocked)
             {
                 return;
@@ -71,7 +52,7 @@ namespace State.PlayerControl
             }
             else if (_Paramaters.JumpBuffer > 0)
             {
-                _FatherStateMachine.SwitchState(typeof(JumpState));
+                _FatherStateMachine.SwitchState(typeof(ChargeJumpState));
             }
             else if (_Paramaters.Velocity.y <= 0 && !_Paramaters.IsGround)
             {
@@ -85,15 +66,13 @@ namespace State.PlayerControl
             {
                 _FatherStateMachine.SwitchState(typeof(ClimbWallState));
             }
-            else if (_HoldTime >= _HoldTimeLimitation)
-            {
-                _FatherStateMachine.SwitchState(typeof(CrouchChargeState));
-            }
         }
         public override void Exit()
         {
             base.Exit();
             _Paramaters.Player.IsCrouch = false;
+            _Paramaters.ChargePercent = _HoldTime / HoldTimeLimitation;
+            _HoldTime = 0;
         }
     }
 }

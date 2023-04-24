@@ -22,9 +22,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e2b7f47255f3b34b88c98af9c427e76, type: 2}
   - {fileID: 11400000, guid: 5d2c32fe11a42eb46b440f2d49187221, type: 2}
   - {fileID: 11400000, guid: 7b1284fa562c83a4a91cef1bd6809e91, type: 2}
-  <_Paramaters>k__BackingField: {fileID: 11400000, guid: bcf10126fe4c6234d9e9ea3973061638,
-    type: 2}
-  <_CurrentState>k__BackingField: {fileID: 11400000, guid: ec0ded82deb1d524986eca4138c5f02f,
-    type: 2}
-  <_LastState>k__BackingField: {fileID: 11400000, guid: ec0ded82deb1d524986eca4138c5f02f,
-    type: 2}
+  - {fileID: 11400000, guid: 9943013aad928aa4eb68734531715444, type: 2}
+  - {fileID: 11400000, guid: 64a9386681bdc8e459095dc4b7f47e98, type: 2}
+  <_Paramaters>k__BackingField: {fileID: 11400000, guid: bcf10126fe4c6234d9e9ea3973061638, type: 2}
+  <_CurrentState>k__BackingField: {fileID: 11400000, guid: f6a639d7d9c688f4e9b59fe4838506d6, type: 2}
+  <_LastState>k__BackingField: {fileID: 11400000, guid: ee6816d60c36d20429d89cc85fcfd45d, type: 2}

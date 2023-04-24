@@ -1,49 +1,41 @@
-﻿using System;
+using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace State.PlayerControl
 {
     [Serializable]
-    [CreateAssetMenu(fileName = "JumpState", menuName = "ScriptableObject/PlayerControl/State/Jump")]
-    public class JumpState : State
+    [CreateAssetMenu(fileName = "ChargeJumpState", menuName = "ScriptableObject/PlayerControl/State/ChargeJumpState")]
+    public class ChargeJumpState : State
     {
-        [FormerlySerializedAs("_Height")]
-        [Header("Config")]
-        [SerializeField] private float _JumpHeight;
-        [SerializeField] private float _CrouchJumpHeight;
+        [Header("Config")] 
+        [SerializeField] private float _MaxJumpHeight;
         [SerializeField] private float _Gravity;
         [SerializeField] private float _MaxSpeed;
         [SerializeField] private float _AccelerateTime;
         [SerializeField] private float _DecelerateTime;
+        [SerializeField] private AnimationCurve _JumpHeightMap;
 
         [Header("Information")]
         [SerializeField, ReadOnly] private float _JumpSpeed;
-        [SerializeField, ReadOnly] private float _CrouchJumpSpeed;
         [SerializeField, ReadOnly] private float _MoveSpeed;
         [SerializeField, ReadOnly] private float _AccelerateSpeed;
         [SerializeField, ReadOnly] private float _DecelerateSpeed;
+        [SerializeField, ReadOnly] private float _JumpHeight;
+
 
         public override void Initialize(StateMachine father)
         {
             base.Initialize(father);
             _JumpSpeed = Mathf.Sqrt(2 * _Gravity * _JumpHeight);
-            _CrouchJumpSpeed = Mathf.Sqrt(2 * _Gravity * _CrouchJumpHeight);
             _AccelerateSpeed = _MaxSpeed / _AccelerateTime;
             _DecelerateSpeed = _MaxSpeed / _DecelerateTime;
         }
         public override void Enter()
         {
             _Paramaters.JumpBuffer = -1;
-            //_JumpSpeed = Mathf.Sqrt(2 * _Gravity * _Height); //可注释，用于调试最合适的重力
-            if (typeof(CrouchState) == _FatherStateMachine._LastState.GetType())
-            {
-                _Paramaters.Velocity.y = _CrouchJumpSpeed;
-            }
-            else
-            {
-                _Paramaters.Velocity.y = _JumpSpeed;
-            }
+            _JumpHeight = _JumpHeightMap.Evaluate(_Paramaters.ChargePercent) * _MaxJumpHeight;
+            _JumpSpeed = Mathf.Sqrt(2 * _Gravity * _JumpHeight); //可注释，用于调试最合适的重力
+            _Paramaters.Velocity.y = _JumpSpeed;
             _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
 
         }

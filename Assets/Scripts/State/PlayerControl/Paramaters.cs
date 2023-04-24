@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Input;
+using UnityEngine.Serialization;
 
 namespace State.PlayerControl
 {
@@ -25,7 +26,7 @@ namespace State.PlayerControl
         [ReadOnly] public bool IsHeld;
         [ReadOnly] public bool IsGrab;
 
-        [Header("Inspecte Information")]
+        [Header("Inspector Information")]
         [ReadOnly] public bool IsFaceRight;
         [ReadOnly] public bool IsGround;
         [ReadOnly] public bool IsWall;
@@ -37,6 +38,7 @@ namespace State.PlayerControl
         [ReadOnly] public Vector2 GrabTarget;
         [ReadOnly] public Vector2 PlayerPosition;
         [ReadOnly] public PlayerController Player;
+        [ReadOnly] public float ChargePercent;
 
         [Header("Output Informtion")]
         [ReadOnly] public Vector2 Velocity;

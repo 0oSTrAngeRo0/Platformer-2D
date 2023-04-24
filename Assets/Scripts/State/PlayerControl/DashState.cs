@@ -29,6 +29,7 @@ namespace State.PlayerControl
             if(_Paramaters.Velocity.x == 0)
             {
                 _FatherStateMachine.PopState();
+                return;
             }
             _Paramaters.Player.IsDash = true;
             _Paramaters.IsDash = false;
