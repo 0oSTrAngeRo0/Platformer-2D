@@ -7,8 +7,5 @@ namespace State.PlayerControl
     [CreateAssetMenu(fileName = "IdleState", menuName = "ScriptableObject/PlayerControl/State/Idle")]
     public class IdleState : State
     {
-        public override void LogicUpdate()
-        {
-        }
     }
 }

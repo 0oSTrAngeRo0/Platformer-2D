@@ -21,6 +21,8 @@ namespace State.PlayerControl
         [SerializeField, ReadOnly] private float _AccelerateSpeed;
         [SerializeField, ReadOnly] private float _DecelerateSpeed;
 
+        public override bool CanEnter => _Paramaters.CurrentJumpTimes < _MaxJumpTimes;
+
         public override void Initialize(StateMachine father)
         {
             base.Initialize(father);
@@ -28,14 +30,10 @@ namespace State.PlayerControl
             _AccelerateSpeed = _MaxSpeed / _AccelerateTime;
             _DecelerateSpeed = _MaxSpeed / _DecelerateTime;
         }
+        
         public override void Enter()
         {
             _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
-            if (_Paramaters.CurrentJumpTimes >= _MaxJumpTimes)
-            {
-                _FatherStateMachine.PopState();
-                return;
-            }
             _Paramaters.CurrentJumpTimes++;
             _Paramaters.JumpBuffer = -1;
             //_JumpSpeed = Mathf.Sqrt(2 * _Gravity * _Height); //可注释，用于调试最合适的重力

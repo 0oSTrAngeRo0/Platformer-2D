@@ -15,11 +15,7 @@ namespace State.PlayerControl
 
         public float HoldTime => _HoldTime;
         public float HoldTimeLimitation => _HoldTimeLimitation;
-
-        public override void Initialize(StateMachine father)
-        {
-            base.Initialize(father);
-        }
+        
         public override void Enter()
         {
             base.Enter();
@@ -27,17 +23,7 @@ namespace State.PlayerControl
             _Paramaters.Velocity = Vector2.zero;
             _HoldTime = 0;
         }
-        public override void PopEnter()
-        {
-            base.PopEnter();
-            _Paramaters.Player.IsCrouch = true;
-            _Paramaters.Velocity = Vector2.zero;
-            _HoldTime = 0;
-        }
-        public override void PhysicsUpdate()
-        {
-            base.PhysicsUpdate();
-        }
+        
         public override void LogicUpdate()
         {
             base.LogicUpdate();

@@ -32,13 +32,6 @@ namespace State.PlayerControl
             _HoldTime = 0;
             _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
         }
-        public override void PopEnter()
-        {
-            base.PopEnter();
-            _Paramaters.Player.IsCrouch = true;
-            _HoldTime = 0;
-            _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
-        }
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
