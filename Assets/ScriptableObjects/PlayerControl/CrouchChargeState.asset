@@ -16,5 +16,5 @@ MonoBehaviour:
   _Paramaters: {fileID: 11400000, guid: bcf10126fe4c6234d9e9ea3973061638, type: 2}
   _StateName: Crouch Charge
   _DebugColor: {r: 0, g: 0, b: 0, a: 0}
-  _HoldTimeLimitation: 3
+  _HoldTimeLimitation: 1
   _HoldTime: 0

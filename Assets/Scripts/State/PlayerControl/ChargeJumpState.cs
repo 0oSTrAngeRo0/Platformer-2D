@@ -8,7 +8,8 @@ namespace State.PlayerControl
     public class ChargeJumpState : State
     {
         [Header("Config")] 
-        [SerializeField] private float _MaxJumpHeight;
+        [SerializeField] private float _MaxJumpHeightAddition;
+        [SerializeField] private float _BaseJumpHeight;
         [SerializeField] private float _Gravity;
         [SerializeField] private float _MaxSpeed;
         [SerializeField] private float _AccelerateTime;
@@ -33,8 +34,8 @@ namespace State.PlayerControl
         public override void Enter()
         {
             _Paramaters.JumpBuffer = -1;
-            _JumpHeight = _JumpHeightMap.Evaluate(_Paramaters.ChargePercent) * _MaxJumpHeight;
-            _JumpSpeed = Mathf.Sqrt(2 * _Gravity * _JumpHeight); //可注释，用于调试最合适的重力
+            _JumpHeight = _JumpHeightMap.Evaluate(_Paramaters.ChargePercent) * _MaxJumpHeightAddition + _BaseJumpHeight;
+            _JumpSpeed = Mathf.Sqrt(2 * _Gravity * _JumpHeight);
             _Paramaters.Velocity.y = _JumpSpeed;
             _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
 

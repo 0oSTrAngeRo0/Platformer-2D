@@ -19,8 +19,8 @@ MonoBehaviour:
   _MaxSpeed: 6
   _AccelerateTime: 0.12
   _DecelerateTime: 0.06
-  _HoldTimeLimitation: 1
-  _MoveSpeed: 6
+  _HoldTimeLimitation: 0.5
+  _MoveSpeed: 0
   _AccelerateSpeed: 50
   _DecelerateSpeed: 100
-  _HoldTime: 0
+  _HoldTime: 1.0199996

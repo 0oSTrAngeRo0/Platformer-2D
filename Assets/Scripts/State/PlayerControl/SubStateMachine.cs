@@ -16,6 +16,8 @@ namespace State.PlayerControl
         {
         }
 
+        public bool CanEnter => true;
+        
         public virtual void Initialize(StateMachine father)
         {
             _FatherStateMachine = father;

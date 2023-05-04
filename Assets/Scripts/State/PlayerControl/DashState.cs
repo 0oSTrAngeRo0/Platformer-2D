@@ -17,6 +17,8 @@ namespace State.PlayerControl
         [Header("Information")]
         [SerializeField, ReadOnly] private float _Speed;
         [SerializeField, ReadOnly] private float _DurationBuffer;
+        
+        public override bool CanEnter => Mathf.Abs(_Paramaters.Velocity.x) > Mathf.Epsilon && _Paramaters.DashCoolBuffer < 0;
 
         public override void Initialize(StateMachine father)
         {
@@ -26,18 +28,8 @@ namespace State.PlayerControl
         public override void Enter()
         {
             base.Enter();
-            if(_Paramaters.Velocity.x == 0)
-            {
-                _FatherStateMachine.PopState();
-                return;
-            }
             _Paramaters.Player.IsDash = true;
             _Paramaters.IsDash = false;
-            if (_Paramaters.DashCoolBuffer > 0)
-            {
-                _FatherStateMachine.PopState();
-                return;
-            }
             _Speed = _Distance / _Duration; //可注释，便于调试
             _DurationBuffer = 0;
             _Paramaters.Velocity.x = _Paramaters.MoveX * _Speed;

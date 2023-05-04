@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765a01946bb945a5bbeef662ed30db1d, type: 3}
   m_Name: ChargeJumpState
   m_EditorClassIdentifier: 
-  _FatherStateMachine: {fileID: 0}
-  _Paramaters: {fileID: 0}
+  _FatherStateMachine: {fileID: 11400000, guid: 6ffe9d1c3fac28443933262612c53b89, type: 2}
+  _Paramaters: {fileID: 11400000, guid: bcf10126fe4c6234d9e9ea3973061638, type: 2}
   _StateName: Charge Jump
   _DebugColor: {r: 0, g: 0, b: 0, a: 0}
-  _MaxJumpHeight: 6
+  _MaxJumpHeightAddition: 3
+  _BaseJumpHeight: 3
   _Gravity: 30
   _MaxSpeed: 12
   _AccelerateTime: 0.12
@@ -45,8 +46,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _JumpSpeed: 0
+  _JumpSpeed: 13.416408
   _MoveSpeed: 0
-  _AccelerateSpeed: 0
-  _DecelerateSpeed: 0
-  _JumpHeight: 6
+  _AccelerateSpeed: 100
+  _DecelerateSpeed: 400
+  _JumpHeight: 3

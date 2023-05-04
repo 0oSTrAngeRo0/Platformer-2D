@@ -36,14 +36,7 @@ namespace State.PlayerControl
         {
             _Paramaters.JumpBuffer = -1;
             //_JumpSpeed = Mathf.Sqrt(2 * _Gravity * _Height); //可注释，用于调试最合适的重力
-            if (typeof(CrouchState) == _FatherStateMachine._LastState.GetType())
-            {
-                _Paramaters.Velocity.y = _CrouchJumpSpeed;
-            }
-            else
-            {
-                _Paramaters.Velocity.y = _JumpSpeed;
-            }
+            _Paramaters.Velocity.y = _JumpSpeed;
             _MoveSpeed = Mathf.Clamp(_Paramaters.Velocity.x, -_MaxSpeed, _MaxSpeed);
 
         }

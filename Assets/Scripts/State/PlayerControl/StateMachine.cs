@@ -25,9 +25,11 @@ namespace State.PlayerControl
             //    return;
             //}
 
+            State target = _States[stateType];
+            if(!target.CanEnter) return;
             _CurrentState.Exit();
             _LastState = _CurrentState;
-            _CurrentState = _States[stateType];
+            _CurrentState = target;
             _CurrentState.Enter();
         }
         public void PopState()

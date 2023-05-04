@@ -19,6 +19,7 @@ namespace State.PlayerControl
         [field: SerializeReference] public string _StateName;
         [field: SerializeReference] public Color _DebugColor;
 
+        public virtual bool CanEnter => true;
         public virtual void Enter() { }
 
         public virtual void PopEnter() { }
