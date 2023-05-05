@@ -15,7 +15,7 @@ public class PlayerControllerDebug : MonoBehaviour
     {
         _StateMachine = GetComponentInParent<PlayerController>()._StateMachine;
         _StateNameTMP = transform.Find("State Name").GetComponent<TextMeshPro>();
-        _CharactorMaterial = GameObject.Find("Player").transform.Find("Charactor").GetComponent<MeshRenderer>().material;
+        _CharactorMaterial = GameObject.Find("Player").transform.Find("Charactor").Find("Stand").GetComponent<MeshRenderer>().material;
     }
     private void Update()
     {

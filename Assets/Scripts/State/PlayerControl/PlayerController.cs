@@ -9,8 +9,11 @@ namespace State.PlayerControl
     {
         [field: SerializeField] public StateMachine _StateMachine { get; private set; }
         [field: SerializeField] public Paramaters _Paramaters { get; private set; }
+        [field: SerializeField] public List<Collider2D> _Colliders { get; private set; }
+        [field: SerializeField] public List<GameObject> _Characters { get; private set; }
 
         private Rigidbody2D _Rigidbody;
+        private Transform _Character;
 
         [SerializeField, ReadOnly] private bool isCrouch;
         public bool IsCrouch
@@ -21,8 +24,7 @@ namespace State.PlayerControl
                 if (isCrouch != value)
                 {
                     isCrouch = value;
-                    transform.localScale = new(1, value?1:2, 1);
-                    transform.position = new(transform.position.x, transform.position.y + (value?-0.5f:0.5f), transform.position.z);
+                    SwitchCharacter(value ? 1 : 0);
                 }
             }
         }
@@ -36,8 +38,7 @@ namespace State.PlayerControl
                 if (isDash != value)
                 {
                     isDash = value;
-                    transform.localScale = new(1, value ? 1 : 2, 1);
-                    transform.position = new(transform.position.x, transform.position.y + (value ? 0.5f : -0.5f), transform.position.z);
+                    SwitchCharacter(value ? 2 : 0);
                 }
             }
         }
@@ -48,6 +49,10 @@ namespace State.PlayerControl
             _Rigidbody = GetComponent<Rigidbody2D>();
             _Paramaters.Initialize();
             _StateMachine.Initialize();
+            _Colliders ??= new List<Collider2D>();
+            _Characters ??= new List<GameObject>();
+            _Character ??= transform.Find("Charactor");
+            SwitchCharacter(0);
         }
 
         private void Update()
@@ -62,6 +67,25 @@ namespace State.PlayerControl
             _Paramaters.PhysicsUpdate();
             _StateMachine.PhysicsUpdate();
             _Rigidbody.velocity = _Paramaters.Velocity;
+        }
+
+        private void SwitchCharacter(int index)
+        {
+            for (int i = 0; i < _Character.childCount; i++)
+            {
+                _Character.GetChild(i).gameObject.SetActive(false);
+            }
+
+            Transform active = _Character.GetChild(index);
+            Debug.Log($"{active.name}");
+            active.gameObject.SetActive(true);
+            foreach (Collider2D collider2D in _Colliders)
+            {
+                Transform colliderTransform = collider2D.transform;
+                colliderTransform.position = active.position;
+                colliderTransform.rotation = active.rotation;
+                colliderTransform.localScale = active.localScale;
+            }
         }
 
         public void OnMove(InputAction.CallbackContext context)
