@@ -1,8 +1,5 @@
 using State.PlayerControl;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using State.PlayerControl;
 
 public class TopChecker : MonoBehaviour
 {
