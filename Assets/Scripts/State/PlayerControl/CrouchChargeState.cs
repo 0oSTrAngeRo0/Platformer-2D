@@ -32,6 +32,11 @@ namespace State.PlayerControl
             {
                 return;
             }
+
+            if (Mathf.Abs(_Paramaters.MoveX) > Mathf.Epsilon)
+            {
+                _FatherStateMachine.SwitchState(typeof(CrouchState));
+            }
             else if (_Paramaters.MoveY>=0 && _Paramaters.IsGround)
             {
                 _FatherStateMachine.SwitchState(typeof(MoveState));

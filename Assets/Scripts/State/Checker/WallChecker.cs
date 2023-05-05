@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,22 @@ public class WallChecker : MonoBehaviour
     [SerializeField] private bool IsRightSideWall;
     [SerializeField] private LayerMask ColliderMask;
 
+    #if UNITY_EDITOR
+    [SerializeField, ReadOnly] private bool isWall;
+    #endif
+    
     void Start()
     {
         _Patamaters = GetComponentInParent<PlayerController>()._Paramaters;
     }
+
+    #if UNITY_EDITOR
+    private void Update()
+    {
+        isWall = _Patamaters.IsWall;
+    }
+    #endif
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((1<<collision.gameObject.layer & ColliderMask.value) != 0)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,21 @@ public class GroundChecker : MonoBehaviour
     private Paramaters _Paramaters;
     [SerializeField] private LayerMask ColliderMask;
 
+    #if UNITY_EDITOR
+    [SerializeField, ReadOnly] private bool isGround;
+    #endif
+
     private void Start()
     {
         _Paramaters = GetComponentInParent<PlayerController>()._Paramaters;
     }
+
+    #if UNITY_EDITOR
+    private void Update()
+    {
+        isGround = _Paramaters.IsGround;
+    }
+    #endif
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

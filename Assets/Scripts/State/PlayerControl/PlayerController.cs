@@ -77,7 +77,6 @@ namespace State.PlayerControl
             }
 
             Transform active = _Character.GetChild(index);
-            Debug.Log($"{active.name}");
             active.gameObject.SetActive(true);
             foreach (Collider2D collider2D in _Colliders)
             {
